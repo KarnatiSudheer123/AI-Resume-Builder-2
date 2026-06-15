@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Resume Builder — Craft Professional Resumes with AI</title>
+<meta name="description" content="Build ATS-friendly, professional resumes in minutes with AI assistance, live preview, multiple templates, and one-click PDF export." />
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+<!-- Animated background -->
+<div class="bg-anim">
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<!-- NAV -->
+<header class="nav glass">
+  <a href="#hero" class="logo">
+    <span class="logo-mark">AI</span>
+    <span class="logo-text">ResumeForge</span>
+  </a>
+  <nav id="navLinks" class="nav-links">
+    <a href="#builder">Builder</a>
+    <a href="#templates">Templates</a>
+    <a href="#assistant">AI Assistant</a>
+    <a href="#preview">Preview</a>
+    <a href="#dashboard">Dashboard</a>
+  </nav>
+  <div class="nav-actions">
+    <button id="themeToggle" class="btn btn-ghost" title="Toggle theme">🌙</button>
+    <button id="menuToggle" class="btn btn-ghost menu-toggle" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="hero-inner glass">
+    <h1>Build a <span class="gradient">Professional Resume</span><br/>Powered by AI</h1>
+    <p class="tagline">Craft job-winning resumes in minutes — modern templates, real-time preview, ATS scoring, and intelligent AI suggestions.</p>
+    <div class="hero-actions">
+      <a href="#builder" class="btn btn-primary">Create Resume</a>
+      <button class="btn btn-primary" id="aiGenerateBtn">✨ Generate with AI</button>
+    </div>
+    <div class="hero-stats">
+      <div><strong id="statResumes">0</strong><span>Resumes Created</span></div>
+      <div><strong id="statScore">--</strong><span>AI Score</span></div>
+      <div><strong id="statCompletion">0%</strong><span>Completion</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILDER -->
+<main id="builder" class="builder">
+  
+  <!-- Progress -->
+  <div class="progress-card glass">
+    <div class="progress-head">
+      <h3>Resume Completion</h3>
+      <span id="progressLabel">0%</span>
+    </div>
+    <div class="progress-bar"><div id="progressFill"></div></div>
+  </div>
+
+  <!-- 2. Personal Info -->
+  <section class="card glass" id="section-personal">
+    <h2>👤 Personal Information</h2>
+    <div class="grid-2">
+      <label>Full Name<input type="text" data-field="fullName" placeholder="John Doe" /></label>
+      <label>Email Address<input type="email" data-field="email" placeholder="john@example.com" /></label>
+      <label>Phone Number<input type="tel" data-field="phone" placeholder="+1 555 000 0000" /></label>
+      <label>LinkedIn Profile<input type="url" data-field="linkedin" placeholder="linkedin.com/in/..." /></label>
+      <label>GitHub Profile<input type="url" data-field="github" placeholder="github.com/..." /></label>
+      <label>Portfolio Website<input type="url" data-field="portfolio" placeholder="yourname.dev" /></label>
+      <label class="full">Address<input type="text" data-field="address" placeholder="City, Country" /></label>
+      <label class="full">Profile Photo<input type="file" id="photoInput" accept="image/*" /></label>
+    </div>
+  </section>
+
+  <!-- 3. Summary -->
+  <section class="card glass">
+    <h2>📝 Career Objective / Summary</h2>
+    <textarea id="summary" data-field="summary" rows="5" maxlength="600" placeholder="Write a strong professional summary..."></textarea>
+    <div class="row-between">
+      <small><span id="summaryCount">0</span>/600 characters</small>
+      <div class="btn-row">
+        <button class="btn" data-ai="generate">✨ Generate</button>
+        <button class="btn" data-ai="improve">⚡ Improve</button>
+        <button class="btn" data-ai="rewrite">🎯 Pro Rewrite</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Education -->
+  <section class="card glass">
+    <h2>🎓 Education</h2>
+    <div class="grid-2">
+      <label>Graduation Degree<input type="text" data-field="degree" placeholder="B.Tech / B.Sc" /></label>
+      <label>College / University<input type="text" data-field="college" /></label>
+      <label>Branch / Stream<input type="text" data-field="branch" /></label>
+      <label>CGPA / Percentage<input type="text" data-field="cgpa" /></label>
+      <label>Graduation Year<input type="text" data-field="gradYear" /></label>
+      <label>Intermediate / Diploma<input type="text" data-field="intermediate" /></label>
+      <label class="full">SSC Details<input type="text" data-field="ssc" placeholder="School, Year, Percentage" /></label>
+    </div>
+  </section>
+
+  <!-- 5. Skills -->
+  <section class="card glass" id="section-skills">
+    <h2>🛠️ Technical Skills</h2>
+    <div class="skills-group">
+      <h4>Frontend</h4>
+      <div class="chips" data-group="frontend">
+        <label><input type="checkbox" value="HTML5"/><span>HTML5</span></label>
+        <label><input type="checkbox" value="CSS3"/><span>CSS3</span></label>
+        <label><input type="checkbox" value="JavaScript"/><span>JavaScript</span></label>
+        <label><input type="checkbox" value="TypeScript"/><span>TypeScript</span></label>
+        <label><input type="checkbox" value="React.js"/><span>React.js</span></label>
+        <label><input type="checkbox" value="Next.js"/><span>Next.js</span></label>
+        <label><input type="checkbox" value="Bootstrap"/><span>Bootstrap</span></label>
+        <label><input type="checkbox" value="Tailwind CSS"/><span>Tailwind CSS</span></label>
+      </div>
+    </div>
+    <div class="skills-group">
+      <h4>Backend</h4>
+      <div class="chips" data-group="backend">
+        <label><input type="checkbox" value="Node.js"/><span>Node.js</span></label>
+        <label><input type="checkbox" value="Express.js"/><span>Express.js</span></label>
+        <label><input type="checkbox" value="Java"/><span>Java</span></label>
+        <label><input type="checkbox" value="Spring Boot"/><span>Spring Boot</span></label>
+        <label><input type="checkbox" value="Python"/><span>Python</span></label>
+        <label><input type="checkbox" value="Django"/><span>Django</span></label>
+        <label><input type="checkbox" value="PHP"/><span>PHP</span></label>
+      </div>
+    </div>
+    <div class="skills-group">
+      <h4>Database</h4>
+      <div class="chips" data-group="database">
+        <label><input type="checkbox" value="MySQL"/><span>MySQL</span></label>
+        <label><input type="checkbox" value="PostgreSQL"/><span>PostgreSQL</span></label>
+        <label><input type="checkbox" value="MongoDB"/><span>MongoDB</span></label>
+        <label><input type="checkbox" value="Firebase"/><span>Firebase</span></label>
+        <label><input type="checkbox" value="SQLite"/><span>SQLite</span></label>
+      </div>
+    </div>
+    <div class="skills-group">
+      <h4>Programming Languages</h4>
+      <div class="chips" data-group="languages">
+        <label><input type="checkbox" value="JavaScript"/><span>JavaScript</span></label>
+        <label><input type="checkbox" value="Java"/><span>Java</span></label>
+        <label><input type="checkbox" value="Python"/><span>Python</span></label>
+        <label><input type="checkbox" value="C"/><span>C</span></label>
+        <label><input type="checkbox" value="C++"/><span>C++</span></label>
+        <label><input type="checkbox" value="C#"/><span>C#</span></label>
+        <label><input type="checkbox" value="TypeScript"/><span>TypeScript</span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Projects -->
+  <section class="card glass">
+    <h2>💼 Projects</h2>
+    <div id="projectsList" class="dyn-list"></div>
+    <button class="btn" data-add="projects">＋ Add Project</button>
+  </section>
+
+  <!-- 7. Work Experience -->
+  <section class="card glass">
+    <h2>🏢 Work Experience</h2>
+    <div id="experienceList" class="dyn-list"></div>
+    <button class="btn" data-add="experience">＋ Add Experience</button>
+  </section>
+
+  <!-- 8. Internship -->
+  <section class="card glass">
+    <h2>🎯 Internships</h2>
+    <div id="internshipsList" class="dyn-list"></div>
+    <button class="btn" data-add="internships">＋ Add Internship</button>
+  </section>
+
+  <!-- 9. Certifications -->
+  <section class="card glass">
+    <h2>📜 Certifications</h2>
+    <div id="certificationsList" class="dyn-list"></div>
+    <button class="btn" data-add="certifications">＋ Add Certification</button>
+  </section>
+
+  <!-- 10. Achievements -->
+  <section class="card glass">
+    <h2>🏆 Achievements</h2>
+    <textarea data-field="achievements" rows="4" placeholder="Awards, coding contest rankings, hackathons, academic achievements..."></textarea>
+  </section>
+
+  <!-- 11. Languages -->
+  <section class="card glass">
+    <h2>🌐 Languages Known</h2>
+    <div class="chips" id="langChips">
+      <label><input type="checkbox" value="English"/><span>English</span></label>
+      <label><input type="checkbox" value="Telugu"/><span>Telugu</span></label>
+      <label><input type="checkbox" value="Hindi"/><span>Hindi</span></label>
+    </div>
+    <div class="inline-add">
+      <input type="text" id="customLangInput" placeholder="Add custom language" />
+      <button class="btn" id="addLangBtn">Add</button>
+    </div>
+  </section>
+
+  <!-- 12. Strengths -->
+  <section class="card glass">
+    <h2>💪 Strengths</h2>
+    <div class="chips" id="strengthChips">
+      <label><input type="checkbox" value="Problem Solving"/><span>Problem Solving</span></label>
+      <label><input type="checkbox" value="Team Collaboration"/><span>Team Collaboration</span></label>
+      <label><input type="checkbox" value="Communication"/><span>Communication</span></label>
+      <label><input type="checkbox" value="Leadership"/><span>Leadership</span></label>
+      <label><input type="checkbox" value="Time Management"/><span>Time Management</span></label>
+    </div>
+  </section>
+
+  <!-- 13. Interests -->
+  <section class="card glass">
+    <h2>🎨 Interests & Hobbies</h2>
+    <div class="chips" id="interestChips">
+      <label><input type="checkbox" value="Reading"/><span>Reading</span></label>
+      <label><input type="checkbox" value="Coding"/><span>Coding</span></label>
+      <label><input type="checkbox" value="Sports"/><span>Sports</span></label>
+      <label><input type="checkbox" value="Technology Research"/><span>Technology Research</span></label>
+    </div>
+    <div class="inline-add">
+      <input type="text" id="customInterestInput" placeholder="Add custom interest" />
+      <button class="btn" id="addInterestBtn">Add</button>
+    </div>
+  </section>
+
+  <!-- 14. Templates -->
+  <section class="card glass" id="templates">
+    <h2>🎭 Resume Templates</h2>
+    <div class="templates">
+      <button class="tpl" data-tpl="modern"><span>Modern</span></button>
+      <button class="tpl" data-tpl="professional"><span>Professional</span></button>
+      <button class="tpl" data-tpl="corporate"><span>Corporate</span></button>
+      <button class="tpl" data-tpl="minimal"><span>Minimal</span></button>
+      <button class="tpl" data-tpl="creative"><span>Creative</span></button>
+    </div>
+  </section>
+  
+  <!-- 15. AI Assistant -->
+  <section class="card glass" id="assistant">
+    <h2>🤖 AI Resume Assistant</h2>
+    <div class="ai-grid">
+      <div class="ai-item"><span>AI Resume Score</span><strong id="aiScore">--</strong></div>
+      <div class="ai-item"><span>ATS Compatibility</span><strong id="aiAts">--</strong></div>
+      <div class="ai-item"><span>Keyword Match</span><strong id="aiKeywords">--</strong></div>
+      <div class="ai-item"><span>Grammar</span><strong id="aiGrammar">--</strong></div>
+    </div>
+    <div id="aiSuggestions" class="suggestions"></div>
+    <button class="btn btn-primary" id="runAiBtn">Run AI Analysis</button>
+  </section>
+
+  <!-- 16. Preview -->
+  <section class="card glass" id="preview">
+    <div class="row-between">
+      <h2>👁️ Resume Preview</h2>
+      <div class="btn-row">
+        <button class="btn" id="zoomOut">−</button>
+        <button class="btn" id="zoomIn">＋</button>
+        <button class="btn" onclick="window.print()">🖨 Print</button>
+      </div>
+    </div>
+    <div class="preview-wrap">
+      <div id="resumePreview" class="resume-doc tpl-modern"></div>
+    </div>
+  </section>
+
+  <!-- 17. Download -->
+  <section class="card glass">
+    <h2>⬇️ Download Resume</h2>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="downloadPdf">Download PDF</button>
+      <button class="btn btn-primary" id="downloadDoc">Download DOC</button>
+      <button class="btn" onclick="window.print()">Print</button>
+      <button class="btn" id="saveBtn">💾 Save</button>
+    </div>
+  </section>
+
+  <!-- 18. Dashboard -->
+  <section class="card glass" id="dashboard">
+    <h2>📊 Dashboard</h2>
+    <div class="dash-grid">
+      <div><span>Total Resumes</span><strong id="dashTotal">0</strong></div>
+      <div><span>Completion</span><strong id="dashCompletion">0%</strong></div>
+      <div><span>AI Score</span><strong id="dashScore">--</strong></div>
+      <div><span>Last Updated</span><strong id="dashUpdated">—</strong></div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer glass">
+  <div class="footer-grid">
+    <div>
+      <h4>About</h4>
+      <p>AI ResumeForge helps you craft beautiful, ATS-friendly resumes powered by smart AI suggestions.</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>karnaisudheer3@gmail.com<br/>+91 7997248754</p>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a><br/>
+      <a href="#">Terms & Conditions</a>
+    </div>
+    <div>
+      <h4>Follow</h4>
+      <div class="socials">
+        <a href="#">𝕏</a>
+        <a href="#">in</a>
+        <a href="#">GH</a>
+        <a href="#">IG</a>
+      </div>
+    </div>
+  </div>
+  <p class="copy">© <span id="year"></span> AI ResumeForge. All rights reserved.</p>
+</footer>
+<script src="/script.js" defer></script>
+</body>
+</html>
